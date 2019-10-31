@@ -12,7 +12,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
 
-	hero$: Observable<Hero>
+	hero: Hero;
 
 	constructor(
 		private route: ActivatedRoute,
@@ -20,22 +20,30 @@ export class HeroDetailComponent implements OnInit {
 		private service: HeroService) { }
 
 	ngOnInit() {
-		
 
-		this.hero$ = this.route.paramMap.pipe(
-			switchMap((params: ParamMap) =>
-				this.service.getHero(params.get('id'))
-				));
-			
+		let selectedId = this.route.snapshot.paramMap.get('id');
+		if (selectedId) {
+
+			this.service.getHero(selectedId).subscribe(data => {
+				this.hero = data;
+			});
+		} else {
+			this.hero = new Hero();
+		}
+
+
+
 	}
 
-	goToHeroes(hero : Hero){
-		let heroId = hero ? hero.id :null;
-		this.router.navigate(['/superheroes', {id: heroId}]);
+	goToHeroes(hero: Hero) {
+		let heroId = hero ? hero.id : null;
+		this.router.navigate(['/superheroes', { id: heroId }]);
 	}
 
-	save(){
-		
+	save() {
+		this.service.createHero(this.hero).subscribe(data => {
+			this.hero = data;
+		});
 	}
 }
 

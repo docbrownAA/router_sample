@@ -7,8 +7,9 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 const heroesRoutes: Routes = [
 	{ path: 'heroes', redirectTo: '/superheroes' },
 	{ path: 'hero/:id', redirectTo: '/superhero/:id' },
+	{ path: 'hero', redirectTo: '/superhero' },
 	{ path: 'superheroes', component: HeroListComponent, data: { animation: 'heroes' } },
-	{ path: 'superhero/:id', component: HeroDetailComponent, data: { animation: 'hero' } }
+	{ path: 'superhero', component: HeroDetailComponent, data: { animation: 'hero' } }
 ];
 
 @NgModule({

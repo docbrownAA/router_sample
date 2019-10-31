@@ -36,4 +36,6 @@ export class HeroListComponent implements OnInit {
     this.selectedHero = hero;
   }
 
+  
+
 }

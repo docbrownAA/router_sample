@@ -35,6 +35,10 @@ export class HeroService {
 	modifyHero(hero: Hero, id: number): Observable<Hero> {
 		return this.http.put<Hero>(this.baseUrl + "/" + id, hero);
 	}
+
+	createHero(hero): Observable<Hero>{
+		return this.http.post<Hero>(this.baseUrl,hero);
+	}
 }
 
 

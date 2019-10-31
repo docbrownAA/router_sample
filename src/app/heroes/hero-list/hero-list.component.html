@@ -1,5 +1,6 @@
 <h2>Heroes</h2>
 <ul class="heroes">
+	<button [routerLink]="['/hero']">Create</button>
   <li *ngFor="let hero of heroes$ | async"
     [class.selected]="hero.id === selectedId"
     >
