@@ -1,0 +1,9 @@
+<p>Dashboard</p>
+<p >session ID: {{sessionId | async}}</p>
+<a id="anchor"></a>
+<p>Token: {{token | async}}</p>
+
+Modules chargés
+<ul>
+	<li *ngFor="let module of modules">{{module}}</li>
+</ul>
